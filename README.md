@@ -2,7 +2,9 @@
 
 A high-performance, minimalist personal portfolio designed with a focus on clean engineering aesthetics and interactive user experience. This project showcases my journey as a Computer Science & AI student, highlighting my work in C++, algorithms, and automation.
 
-![Portfolio Preview](public/favicon.svg) <!-- Add a real image path if available, or keep it clean -->
+<p align="center">
+  <img src="public/logo.png" alt="Saif Alfeshawy Logo" width="200" />
+</p>
 
 ## 🚀 Overview
 
