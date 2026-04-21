@@ -7,7 +7,7 @@ const Header = () => {
             <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
                 <div className="text-xl font-bold tracking-tighter cursor-pointer font-outfit">
                     <Link to="hero" smooth={true} duration={500}>
-                        ALFESHAWY<span className="text-eng-accent">.</span>
+                        SAIF ALFESHAWY<span className="text-eng-accent">.</span>
                     </Link>
                 </div>
                 
