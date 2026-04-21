@@ -5,20 +5,23 @@ const Header = () => {
     return (
         <header className="fixed top-0 left-0 w-full z-50 glass">
             <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                <div className="text-xl font-bold tracking-tighter cursor-pointer">
+                <div className="text-xl font-bold tracking-tighter cursor-pointer font-outfit">
                     <Link to="hero" smooth={true} duration={500}>
-                        ALFESHAWY
+                        ALFESHAWY<span className="text-eng-accent">.</span>
                     </Link>
                 </div>
                 
-                <nav className="hidden md:flex items-center space-x-8 text-sm font-medium">
-                    <Link to="about" smooth={true} duration={500} className="cursor-pointer hover:text-graphite-accent transition-colors">
+                <nav className="hidden md:flex items-center space-x-10 text-[11px] uppercase tracking-[0.2em] font-medium">
+                    <Link to="about" smooth={true} duration={500} className="cursor-pointer hover:text-eng-accent transition-colors">
                         About
                     </Link>
-                    <Link to="experience" smooth={true} duration={500} className="cursor-pointer hover:text-graphite-accent transition-colors">
+                    <Link to="projects" smooth={true} duration={500} className="cursor-pointer hover:text-eng-accent transition-colors">
+                        Projects
+                    </Link>
+                    <Link to="experience" smooth={true} duration={500} className="cursor-pointer hover:text-eng-accent transition-colors">
                         Experience
                     </Link>
-                    <Link to="contact" smooth={true} duration={500} className="cursor-pointer hover:text-graphite-accent transition-colors">
+                    <Link to="contact" smooth={true} duration={500} className="cursor-pointer hover:text-eng-accent transition-colors">
                         Contact
                     </Link>
                 </nav>

@@ -5,26 +5,22 @@ const Footer = () => {
     const year = new Date().getFullYear();
 
     return (
-        <footer className="py-12 px-6 border-t border-white/5">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-                <div className="text-sm text-white/40 font-medium">
-                    &copy; {year} Saif Alfeshawy. All rights reserved.
+        <footer className="py-16 px-6 border-t border-white/5 bg-[#08080a]">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+                <div className="text-xs text-eng-muted font-mono uppercase tracking-widest">
+                    &copy; {year} Saif Alfeshawy <span className="mx-2 opacity-30">//</span> Logical_Architect
                 </div>
                 
-                <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-8 gap-y-4 text-sm text-white/40">
-                    <Link to="hero" smooth={true} duration={500} className="hover:text-white transition-colors cursor-pointer">Home</Link>
-                    <Link to="about" smooth={true} duration={500} className="hover:text-white transition-colors cursor-pointer">About</Link>
-                    <Link to="experience" smooth={true} duration={500} className="hover:text-white transition-colors cursor-pointer">Experience</Link>
-                    <Link to="contact" smooth={true} duration={500} className="hover:text-white transition-colors cursor-pointer">Contact</Link>
-                    
-                    <div className="hidden md:block w-px h-4 bg-white/10 mx-2"></div>
-                    
-                    <a href="https://github.com/alfeshawy/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
-                    <a href="https://www.linkedin.com/in/saif-alfeshawy/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+                <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-[10px] uppercase tracking-[0.2em] font-medium text-eng-muted">
+                    <Link to="hero" smooth={true} duration={500} className="hover:text-eng-accent transition-colors cursor-pointer">System_Home</Link>
+                    <Link to="about" smooth={true} duration={500} className="hover:text-eng-accent transition-colors cursor-pointer">Module_Info</Link>
+                    <Link to="projects" smooth={true} duration={500} className="hover:text-eng-accent transition-colors cursor-pointer">Logic_Base</Link>
+                    <Link to="experience" smooth={true} duration={500} className="hover:text-eng-accent transition-colors cursor-pointer">Work_Flow</Link>
+                    <Link to="contact" smooth={true} duration={500} className="hover:text-eng-accent transition-colors cursor-pointer">Comm_Link</Link>
                 </div>
 
-                <div className="text-sm text-white/40">
-                    Built with React + Tailwind v4
+                <div className="text-[10px] text-eng-muted font-mono opacity-50">
+                    STATUS: STABLE_V2.0
                 </div>
             </div>
         </footer>

@@ -35,25 +35,26 @@ const SpiderCanvas = () => {
                 this.size = size;
                 this.baseX = x;
                 this.baseY = y;
+                this.color = Math.random() > 0.5 ? '#3b82f6' : '#60a5fa';
             }
 
             draw() {
-                ctx.fillStyle = 'rgba(229, 229, 229, 0.5)';
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = this.color;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
+                ctx.shadowBlur = 0;
             }
 
             update() {
-                // Random drift
                 this.x += this.vx;
                 this.y += this.vy;
 
-                // Bounce off edges
                 if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
                 if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
 
-                // Mouse interaction physics
                 if (mouse.x !== null && mouse.y !== null) {
                     let dx = mouse.x - this.x;
                     let dy = mouse.y - this.y;
@@ -63,19 +64,17 @@ const SpiderCanvas = () => {
                         const forceDirectionX = dx / distance;
                         const forceDirectionY = dy / distance;
                         const force = (mouse.radius - distance) / mouse.radius;
-                        const speed = force * 0.5;
+                        const speed = force * 0.8;
 
-                        this.vx += forceDirectionX * speed * 0.1;
-                        this.vy += forceDirectionY * speed * 0.1;
+                        this.vx += forceDirectionX * speed * 0.2;
+                        this.vy += forceDirectionY * speed * 0.2;
                     }
                 }
 
-                // Friction / Stability
-                this.vx *= 0.99;
-                this.vy *= 0.99;
+                this.vx *= 0.98;
+                this.vy *= 0.98;
 
-                // Speed limit
-                const maxSpeed = 1.2;
+                const maxSpeed = 1.5;
                 const currentSpeed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
                 if (currentSpeed > maxSpeed) {
                     this.vx = (this.vx / currentSpeed) * maxSpeed;
@@ -88,13 +87,13 @@ const SpiderCanvas = () => {
 
         const init = () => {
             particles = [];
-            const numberOfParticles = Math.floor((canvas.width * canvas.height) / 12000);
+            const numberOfParticles = Math.floor((canvas.width * canvas.height) / 15000);
             for (let i = 0; i < numberOfParticles; i++) {
-                let size = Math.random() * 1.5 + 0.5;
+                let size = Math.random() * 2 + 1;
                 let x = Math.random() * canvas.width;
                 let y = Math.random() * canvas.height;
-                let vx = (Math.random() - 0.5) * 0.4;
-                let vy = (Math.random() - 0.5) * 0.4;
+                let vx = (Math.random() - 0.5) * 0.6;
+                let vy = (Math.random() - 0.5) * 0.6;
                 particles.push(new Particle(x, y, vx, vy, size));
             }
         };
@@ -106,10 +105,10 @@ const SpiderCanvas = () => {
                     let dy = particles[a].y - particles[b].y;
                     let distance = Math.sqrt(dx * dx + dy * dy);
 
-                    if (distance < 120) {
-                        let opacity = 1 - (distance / 120);
-                        ctx.strokeStyle = `rgba(229, 229, 229, ${opacity * 0.15})`;
-                        ctx.lineWidth = 0.5;
+                    if (distance < 150) {
+                        let opacity = 1 - (distance / 150);
+                        ctx.strokeStyle = `rgba(59, 130, 246, ${opacity * 0.2})`;
+                        ctx.lineWidth = 1;
                         ctx.beginPath();
                         ctx.moveTo(particles[a].x, particles[a].y);
                         ctx.lineTo(particles[b].x, particles[b].y);
@@ -117,15 +116,14 @@ const SpiderCanvas = () => {
                     }
                 }
 
-                // Link to mouse
                 if (mouse.x !== null && mouse.y !== null) {
                     let dx = particles[a].x - mouse.x;
                     let dy = particles[a].y - mouse.y;
                     let distance = Math.sqrt(dx * dx + dy * dy);
                     if (distance < mouse.radius) {
                         let opacity = 1 - (distance / mouse.radius);
-                        ctx.strokeStyle = `rgba(229, 229, 229, ${opacity * 0.25})`;
-                        ctx.lineWidth = 0.8;
+                        ctx.strokeStyle = `rgba(96, 165, 250, ${opacity * 0.4})`;
+                        ctx.lineWidth = 1.5;
                         ctx.beginPath();
                         ctx.moveTo(particles[a].x, particles[a].y);
                         ctx.lineTo(mouse.x, mouse.y);
@@ -134,6 +132,7 @@ const SpiderCanvas = () => {
                 }
             }
         };
+
 
         const animate = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);

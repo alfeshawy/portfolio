@@ -1,58 +1,53 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const About = () => {
-    const skills = [
-        'React', 'Next.js', 'TypeScript', 'Tailwind CSS',
-        'Three.js', 'Node.js', 'Framer Motion', 'Canvas API'
-    ];
-
     return (
-        <section id="about" className="py-24 px-6 max-w-7xl mx-auto">
+        <section id="about" className="py-32 px-6 max-w-7xl mx-auto overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-                <div>
-                    <h2 className="text-sm uppercase tracking-widest text-white/50 mb-4">About Me</h2>
-                    <h3 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
-                        Bridging the gap between <span className="text-white/60 italic">algorithms and intelligent systems.</span>
+                <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <h2 className="text-eng-accent font-mono text-xs uppercase tracking-[0.3em] mb-4">01: Core_Identity</h2>
+                    <h3 className="text-4xl md:text-6xl font-bold mb-8 leading-tight tracking-tighter">
+                        Building a strong foundation in <span className="text-eng-muted italic">software engineering.</span>
                     </h3>
-                    <p className="text-white/60 text-lg leading-relaxed mb-8">
-                        I am a Computer Science and Artificial Intelligence student at Helwan University with a deep passion for solving complex algorithmic problems and exploring the frontiers of technology. As a dedicated ICPC trainee, I thrive in competitive programming environments, constantly sharpening my analytical thinking. 
+                    <p className="text-eng-muted text-lg leading-relaxed mb-8">
+                        I am a first-year Computer Science and Artificial Intelligence student at Helwan University with a 3.4 GPA. I focus on building a rigorous technical foundation through academic excellence and intensive practical application.
                     </p>
-                    <p className="text-white/60 text-lg leading-relaxed mb-8">
-                        Beyond the code, I specialize in the professional orchestration of AI tools to build efficient, future-ready solutions. I am a lifelong learner and a regular attendee of global tech summits and exhibitions, staying at the cutting edge of the software industry.
+                    <p className="text-eng-muted text-lg leading-relaxed">
+                        As a dedicated trainee at the ICPC Helwan Community, I focus on C++ and deep diving into Data Structures and OOP principles. I leverage modern AI tools to accelerate my learning and build functional, efficient solutions.
                     </p>
-                </div>
-                
+                </motion.div>
+
                 <div className="grid grid-cols-1 gap-6 mt-12 lg:mt-0">
-                    <div className="glass-card">
-                        <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
-                             Competitive Programming
-                        </h4>
-                        <p className="text-white/50 text-sm leading-relaxed mb-4">
-                            Expert in data structures and algorithms (ICPC Trainee). I enjoy solving challenging problems that require abstract thinking and optimized implementations.
-                        </p>
-                    </div>
-
-                    <div className="glass-card">
-                        <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
-                             AI Orchestration
-                        </h4>
-                        <p className="text-white/50 text-sm leading-relaxed mb-4">
-                            Professional use of LLMs, Agentic workflows, and AI-driven development. I focus on integrating intelligence into everyday software solutions.
-                        </p>
-                    </div>
-
-                    <div className="glass-card">
-                        <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
-                             Continuous Learning
-                        </h4>
-                        <p className="text-white/50 text-sm leading-relaxed">
-                            Active participant in tech conferences and networking events, keeping pace with the rapid evolution of the global tech landscape.
-                        </p>
-                    </div>
+                    {[
+                        { title: 'Competitive Programming', desc: 'Active member and trainee at ICPC Helwan Community. Codeforces Rating: 1180. Focused on mastering data structures and algorithmic efficiency in C++.' },
+                        { title: 'Automation & Scripting', desc: 'Skilled in leveraging AI-assisted development tools (Cursor, LLMs) to accelerate coding, debugging, and project scaffolding.' },
+                        { title: 'Software Engineering', desc: 'Building functional systems with a focus on core logic, algorithmic efficiency, and modular Object-Oriented Design (OOD).' }
+                    ].map((card, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: i * 0.1 }}
+                            className="glass-card"
+                        >
+                            <h4 className="text-xl font-bold mb-4 flex items-center gap-3">
+                                <span className="text-eng-accent font-mono text-sm opacity-50">0{i + 1}.</span> {card.title}
+                            </h4>
+                            <p className="text-eng-muted text-sm leading-relaxed">
+                                {card.desc}
+                            </p>
+                        </motion.div>
+                    ))}
                 </div>
             </div>
         </section>
     );
 };
+
 
 export default About;
